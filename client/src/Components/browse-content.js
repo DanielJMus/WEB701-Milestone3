@@ -48,6 +48,15 @@ class Browse extends React.Component {
         this.GetJsonData();
     }
 
+    contentClickHandler = (e) => {
+        const targetLink = e.target.closest('a');
+        const productTarget = "/product/" + targetLink.href.split("/product/")[1];
+        console.log(productTarget);
+        if(!targetLink) return;
+        e.preventDefault();
+        this.props.history.push(productTarget)
+    }
+
     render () {
         const { js } = this.state;
         return (
@@ -58,7 +67,7 @@ class Browse extends React.Component {
                 <div className="modeling-content">
                     <h1>Browse Products</h1>
 
-                    {js && <div className="content" dangerouslySetInnerHTML={{ __html: this.GetProducts() }}></div>}
+                    {js && <div className="content" onClick={this.contentClickHandler} dangerouslySetInnerHTML={{ __html: this.GetProducts() }}></div>}
 
                     <div className="clear"/>
                 </div>

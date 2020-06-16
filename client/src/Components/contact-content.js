@@ -24,7 +24,7 @@ class Contact extends React.Component {
                 <br></br>
                 <br></br>
                 <div className="contact-content">
-                <h1>Contact Me</h1>
+                <h1>Contact Fresh Fruit Juice</h1>
                 { !this.state.submitted && <form className="input-form" onSubmit={this.handleSubmit}>
                     <h3>Name:</h3>
                     <input className="input-name" ref={(ref) => {this.Name = ref}} type="text" name="name"></input><br></br>
