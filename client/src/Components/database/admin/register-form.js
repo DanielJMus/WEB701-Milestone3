@@ -17,10 +17,9 @@ class RegisterForm extends React.Component {
             method: 'post',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
-             "FirstName": this.FirstName.value,
-             "LastName": this.LastName.value,
-             "Email": this.Email.value,
-             "Password": this.Password.value,
+             "USERNAME": this.Name.value,
+             "EMAIL": this.Email.value,
+             "PASSWORD": this.Password.value
             })
         }).then(res => {
             if (res.status === 201) alert("Successfully created account.")
@@ -37,12 +36,8 @@ class RegisterForm extends React.Component {
                 <div className='register-form'>
                     <form onSubmit={this.handleSubmit}>
                     <label>
-                        First Name:
-                        <input ref={(ref) => {this.FirstName = ref}} type="text" id="input-firstname" name="firstname"/>
-                    </label><br></br>
-                    <label>
-                        Last Name:
-                        <input ref={(ref) => {this.LastName = ref}} type="text" id="input-lastname" name="lastname"/>
+                        Name:
+                        <input ref={(ref) => {this.Name = ref}} type="text" id="input-name" name="name"/>
                     </label><br></br>
                     <label>
                         Email:

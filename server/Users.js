@@ -43,14 +43,13 @@ function GetUserLogin(req, res) {
         knex
     } = req.app.locals
     const {
-        name,
+        email,
     } = req.params
-    console.log(name);
     knex
         .select('ID','USERNAME', 'EMAIL', 'PASSWORD', 'USERTYPE')
         .from('users')
         .where({
-            USERNAME: `${name}`
+            EMAIL: `${email}`
         })
         .then(data => {
             if (data.length > 0) {
@@ -69,7 +68,7 @@ function PostUser(req, res) {
         knex
     } = req.app.locals
     const payload = req.body
-    const mandatoryColumns = ['USERNAME', 'EMAIL', 'PASSWORD', 'USERTYPE']
+    const mandatoryColumns = ['USERNAME', 'EMAIL', 'PASSWORD']
     const payloadKeys = Object.keys(payload)
     const mandatoryColumnsExists = mandatoryColumns.every(mc => payloadKeys.includes(mc))
     if (mandatoryColumnsExists) {

@@ -30,8 +30,8 @@ class Login extends React.Component {
                     <div className='login-form'>
                         <form onSubmit={this.onSubmit}>
                         <label>
-                            Username:
-                            <input type="username" id="input-email" name="username" onChange={e => this.setState({username: e.target.value})}/>
+                            Email:
+                            <input type="email" id="input-email" name="email" onChange={e => this.setState({email: e.target.value})}/>
                         </label><br></br>
                         <label>
                             Password:
@@ -49,8 +49,8 @@ class Login extends React.Component {
 
     onSubmit = (e) => {
         e.preventDefault();
-        let {username, password} = this.state;
-        this.props.login(username, password);
+        let {email, password} = this.state;
+        this.props.login(email, password);
     }
 }
 
@@ -66,7 +66,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        login: (username, password) => dispatch(login(username, password))
+        login: (email, password) => dispatch(login(email, password))
     };
 }
 

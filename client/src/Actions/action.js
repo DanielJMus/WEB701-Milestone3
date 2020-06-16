@@ -70,9 +70,9 @@ export function logout() {
 
 /* Handles login credential checking for user, checks their email and password within
 the user database and returns whether the login was successful or not. */
-function sendLoginRequest (username, password) {
+function sendLoginRequest (email, password) {
     return new Promise((resolve, reject) => {
-        fetch('http://localhost:4200/api/users/' + username, {
+        fetch('http://localhost:4200/api/users/' + email, {
             method: 'get'
         }).then(res =>
             res.json().then(json => {
