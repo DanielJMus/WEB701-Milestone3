@@ -1,0 +1,51 @@
+.home-section {
+    padding:50px;
+    width:60%;
+    margin: 0 auto;
+}
+
+.home-section-title {
+    margin-bottom:0;
+}
+
+.home-section.right {
+    display:flex;
+    align-items: center;
+}
+
+.home-section.left {
+    display:flex;
+    align-items: center;
+}
+
+.home-section-info.right {
+    float:left;
+    width:60%;
+    text-align: left;
+}
+
+.home-section-image.right {
+    margin: auto;
+    width:30%;
+    box-shadow: 1px 1px 2px;
+}
+
+.home-section-info.left {
+    margin: auto;
+    width:60%;
+    text-align: right;
+}
+
+.home-section-image.left {
+    float:left;
+    width:30%;
+    box-shadow: 1px 1px 2px;
+}
+
+.clear {
+    clear: both;
+}
+
+h1 {
+    text-align: center;
+}

@@ -1,0 +1,103 @@
+.App {
+  text-align: center;
+  margin:0;
+  padding:0;
+}
+
+html {
+  margin:0;
+  padding:0;
+  min-width: 640px;
+}
+
+.App-content {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: rgb(212, 207, 207);
+}
+
+.App-title {
+  color:white;
+}
+
+nav {
+  float:right;
+  margin-right:100px;
+}
+
+.nav-bar {
+  width:100%;
+  height:100px;
+  background-color:#f1f1f1;
+  line-height: 55px;
+}
+
+.nav-title {
+  padding-left:50px;
+  padding-top:5px;
+  float:left;
+  color:#ff9029;
+}
+
+.nav-item {
+  padding:10px;
+  display: block;
+  float:left;
+  color:#282c34;
+  height:100%;
+}
+
+.nav-item a {
+  text-decoration: none;
+  color:#282c34;
+}
+
+.nav-item a:hover {
+  color:#313642;
+}
+
+.footer {
+  height:200px;
+  color:white;
+  background-color:#252d2f;
+  padding-left:10%;
+}
+
+.footer-list {
+  padding-top:30px;
+  width:200px;
+  list-style-type: none;
+}
+
+.footer-item a {
+  text-decoration: none;
+  color:white;
+}
+
+@media only screen and (max-width: 993px) {
+
+  nav {
+    width:100%;
+    margin:0 auto;
+    text-align:center;
+  }
+
+  .nav-title {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 1200px) and (min-width: 993px) {
+  .nav-bar {
+    font-size: 10pt;
+  }
+
+  .nav-title {
+    font-size: 18pt;
+  }
+}
