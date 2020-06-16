@@ -2,6 +2,7 @@ export const LOGIN_PENDING = 'LOGIN_PENDING';
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const IS_SELLER = 'IS_SELLER';
+export const USER_ID = 'USER_ID';
 
 // Whether the site is waiting for the user to try logging in
 export function setLoginPending(isLoginPending) {
@@ -35,18 +36,27 @@ export function setIsSeller (isSeller) {
     };
 }
 
+export function setUserID (userID) {
+    return {
+        type: USER_ID,
+        userID
+    };
+}
+
 export function login(username, password) {
     return dispatch => {
         dispatch(setLoginPending(true));
         dispatch(setLoginSuccess(false));
         dispatch(setLoginError(false));
         dispatch(setIsSeller(false));
+        dispatch(setUserID(-1));
 
         sendLoginRequest(username, password)
-            .then(isSeller => {
+            .then(json => {
                     dispatch(setLoginPending(false));
                     dispatch(setLoginSuccess(true));
-                    if(isSeller === true)
+                    dispatch(setUserID(json.ID));
+                    if(json.USERTYPE.data[0] === 1)
                     {
                         dispatch(setIsSeller(true));
                     }
@@ -54,6 +64,7 @@ export function login(username, password) {
             .catch(error => {
                 dispatch(setLoginPending(false));
                 dispatch(setLoginError(error));
+                dispatch(setUserID(-1));
             })
     }
 }
@@ -65,6 +76,7 @@ export function logout() {
         dispatch(setLoginSuccess(false));
         dispatch(setLoginError(false));
         dispatch(setIsSeller(false));
+        dispatch(setUserID(-1));
     }
 }
 
@@ -78,8 +90,7 @@ function sendLoginRequest (email, password) {
             res.json().then(json => {
                 if(json.length > 0) {
                     if(json[0].PASSWORD === password) {
-                        console.log(json[0]);
-                        return resolve(json[0].USERTYPE.data[0] === 1);
+                        return resolve(json[0]);
                     }
                 }
                 return reject(new Error("Invalid username or password"));

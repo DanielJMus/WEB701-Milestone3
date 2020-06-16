@@ -33,15 +33,10 @@ router.delete('/users/:id', routes.UserRoutes.DeleteUser);
 
 router.get('/products', routes.ProductRoutes.GetAllProducts);
 router.get('/products/:id', routes.ProductRoutes.GetProduct);
+router.get('/listings/:id', routes.ProductRoutes.GetAllSellerListings);
 router.post('/products', jsonParser, routes.ProductRoutes.PostProduct);
 router.put('/products/:id', jsonParser, routes.ProductRoutes.UpdateProduct);
 router.delete('/products/:id', routes.ProductRoutes.DeleteProduct);
-
-router.get('/gamedev', routes.gamedevList.listAllGameDevs);
-router.get('/gamedev/:id', routes.gamedevList.listSingleGameDev);
-router.post('/gamedev', jsonParser, routes.gamedevList.postGameDev);
-router.put('/gamedev/:id', jsonParser, routes.gamedevList.updateGameDev);
-router.delete('/gamedev/:id', routes.gamedevList.deleteGameDev);
 
 app.use('/api', router);
 

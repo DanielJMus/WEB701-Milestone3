@@ -36,6 +36,30 @@ function GetProduct(req, res) {
         .catch(error => res.status(500).json(error))
 }
 
+function GetAllSellerListings (req, res)
+{
+    const {
+        knex
+    } = req.app.locals
+    const {
+        id
+    } = req.params
+    knex
+    .select('ID','NAME', 'DESCRIPTION', 'PRICE', 'CALORIES', 'FRUIT', 'SUGAR', 'IMG', 'SELLERID')
+    .from('products')
+    .where({
+        SELLERID: `${id}`
+    })
+    .then(data => {
+        if (data.length > 0) {
+            return res.status(200).json(data)
+        } else {
+            return res.status(404).json(`No products found for user ${id}`);
+        }
+    })
+    .catch(error => res.status(500).json(error));
+}
+
 /* Add a product to the database */
 function PostProduct(req, res) {
     // Destructuring 
@@ -101,6 +125,7 @@ function DeleteProduct(req, res) {
 
 module.exports = {
     GetAllProducts,
+    GetAllSellerListings,
     GetProduct,
     PostProduct,
     UpdateProduct,

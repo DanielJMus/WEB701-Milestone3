@@ -1,10 +1,11 @@
-import { LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_ERROR, IS_SELLER } from '../Actions/action';
+import { LOGIN_PENDING, LOGIN_SUCCESS, LOGIN_ERROR, IS_SELLER, USER_ID } from '../Actions/action';
 
 export default function reducer(state = {
     isLoginPending: false,
     isLoginSuccess: false,
     isLoginError: null,
-    isSeller: false
+    isSeller: false,
+    userID:-1
 }, action) {
     switch(action.type) {
         case LOGIN_SUCCESS:
@@ -29,6 +30,12 @@ export default function reducer(state = {
             return {
                 ...state,
                 isSeller: action.isSeller
+            };
+
+        case USER_ID:
+            return {
+                ...state,
+                userID: action.userID
             };
     
 
