@@ -14,7 +14,6 @@
     width:40%;
     margin:40px;
     padding:20px;
-    height:200px;
     float:right;
     box-sizing: border-box;
     border-radius: 20px;
@@ -46,4 +45,39 @@
 .bid-header {
     font-size: 18px;
     font-weight: bold;
+}
+
+.bid {
+    font-size:14px;
+}
+
+table {
+    font-weight: normal;
+    font-size:14px;
+    width:100%;
+}
+
+th {
+    font-weight:bold;
+    text-align: left;
+}
+
+.btn-bid {
+    float:right;
+    transition: background-color 0.1s;
+    background-color:#ff9029;
+    height:40px;
+    width:130px;
+    border:0;
+    border-radius: 10px;
+}
+
+.btn-bid:hover {
+    background-color:#ffad6a;
+}
+
+.login-note {
+    color:#555;
+    margin:0;
+    float:right;
 }

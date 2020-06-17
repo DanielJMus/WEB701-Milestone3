@@ -28,30 +28,13 @@ class Browse extends React.Component {
         );
     }
 
-    // Format the JSON data of the posts into displayable HTML
-    GetProducts () {
-        var jsonFinal = "";
-        for(var i = 0; i < this.state.js.length; i++) {
-            jsonFinal +=    "<div class='section'>" +
-                                "<div class='section-info'>" +
-                                    "<a href='../product/" + this.state.js[i].ID + "'><h2 class='section-title' product-id='" + this.state.js[i].ID + "'>" + this.state.js[i].NAME + " | $" + this.state.js[i].PRICE +"</h2></a>" +
-                                    "<p class='section-description'>" + this.state.js[i].DESCRIPTION + "</p>" +
-                                "</div>" +
-                                "<img class='section-image' src='" + this.state.js[i].IMG + "'/>" +
-                                "<div class='clear'/>" +
-                            "</div></div>";
-        }
-        return jsonFinal;
-    }
-
     componentDidMount () {
         this.GetJsonData();
     }
 
     contentClickHandler = (e) => {
         const targetLink = e.target.closest('a');
-        const productTarget = "/product/" + targetLink.href.split("/product/")[1];
-        console.log(productTarget);
+        const productTarget = "/product/" + targetLink.getAttribute('productID');
         if(!targetLink) return;
         e.preventDefault();
         this.props.history.push(productTarget)
@@ -59,6 +42,19 @@ class Browse extends React.Component {
 
     render () {
         const { js } = this.state;
+        if (js == null) return null;
+        var products = js.map(item => 
+            <div className='section'>
+                <div className='section-info'>
+                    <a href="/" productID={item.ID}>
+                        <h2 className='section-title' product-id={item.ID}>{item.NAME} | ${item.PRICE}</h2>
+                    </a>
+                    <p className='section-description'>{item.DESCRIPTION}</p>
+                </div>
+                    <img className='section-image' src={item.IMG}/>
+                <div class='clear'/>
+            </div>
+        )
         return (
             <div className="content">
                 <Navbar/>
@@ -67,7 +63,7 @@ class Browse extends React.Component {
                 <div className="modeling-content">
                     <h1>Browse Products</h1>
 
-                    {js && <div className="content" onClick={this.contentClickHandler} dangerouslySetInnerHTML={{ __html: this.GetProducts() }}></div>}
+                    {js && <div className="content" onClick={this.contentClickHandler}>{products}</div>}
 
                     <div className="clear"/>
                 </div>

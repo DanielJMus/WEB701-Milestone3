@@ -38,6 +38,11 @@ router.post('/products', jsonParser, routes.ProductRoutes.PostProduct);
 router.put('/products/:id', jsonParser, routes.ProductRoutes.UpdateProduct);
 router.delete('/products/:id', routes.ProductRoutes.DeleteProduct);
 
+// API Routing
+router.get('/bids/:id', routes.BidRoutes.GetBids);
+router.post('/bids', jsonParser, routes.BidRoutes.PostBid);
+router.delete('/bids/:id', routes.BidRoutes.DeleteBid);
+
 app.use('/api', router);
 
 app.listen(config.port, () => {

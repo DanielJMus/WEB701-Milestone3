@@ -57,22 +57,6 @@ class Dashboard extends React.Component {
         this.GetJsonData();
     }
 
-    // Format the JSON data of the posts into displayable HTML
-    GetSellerListings () {
-        var jsonFinal = "";
-        for(var i = 0; i < this.state.js.length; i++) {
-            jsonFinal +=    "<div class='listing-section'>" +
-                                "<div class='section-info'>" +
-                                    "<a href='../product/" + this.state.js[i].ID + "'><h2 class='section-title' product-id='" + this.state.js[i].ID + "'>" + this.state.js[i].NAME + " | $" + this.state.js[i].PRICE +"</h2></a>" +
-                                    "<p class='section-description'>" + this.state.js[i].DESCRIPTION + "</p>" +
-                                "</div>" +
-                                "<img class='section-image' src='" + this.state.js[i].IMG + "'/>" +
-                                "<div class='clear'/>" +
-                            "</div></div>";
-        }
-        return jsonFinal;
-    }
-
     DeleteAccount () {
         fetch('http://localhost:4200/api/users/' + this.props.userID, {
             method: 'delete',
@@ -92,6 +76,19 @@ class Dashboard extends React.Component {
 
     render() {
         const { js } = this.state;
+        if (js == null) return null;
+        var products = js.map(item => 
+            <div className='listing-section'>
+                <div className='section-info'>
+                    <a href="/" productID={item.ID}>
+                        <h2 className='section-title' product-id={item.ID}>{item.NAME} | ${item.PRICE}</h2>
+                    </a>
+                    <p className='section-description'>{item.DESCRIPTION}</p>
+                </div>
+                    <img className='section-image' src={item.IMG}/>
+                <div class='clear'/>
+            </div>
+        )
         return(
             <div className="content">
                 <Navbar/>
@@ -128,7 +125,7 @@ class Dashboard extends React.Component {
                             js && this.props.isSeller &&
                             <div className="content">
                                 <h2>Your Listings</h2>
-                                <div className="seller-listings" dangerouslySetInnerHTML={{ __html: this.GetSellerListings() }}></div>
+                                <div className="seller-listings">{products}</div>
                             </div>
                         }
                     </div>
