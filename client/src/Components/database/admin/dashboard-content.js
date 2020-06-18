@@ -5,6 +5,8 @@ import './dashboard-content.css';
 import Navbar from '../../navbar';
 import {Footer} from '../../footer';
 
+import { Link } from "react-router-dom";
+
 import { connect } from 'react-redux';
 import { login } from '../../../Actions/action';
 import { logout } from '../../../Actions/action';
@@ -76,8 +78,8 @@ class Dashboard extends React.Component {
 
     render() {
         const { js } = this.state;
-        if (js == null) return null;
-        var products = js.map(item => 
+        if (js == null || !this.props.isLoginSuccess) return null;
+        var products = this.props.isSeller && js.map(item => 
             <div className='listing-section'>
                 <div className='section-info'>
                     <a href="/" productID={item.ID}>
@@ -125,6 +127,9 @@ class Dashboard extends React.Component {
                             js && this.props.isSeller &&
                             <div className="content">
                                 <h2>Your Listings</h2>
+                                <Link to="/createListing">
+                                    <button className="create-listing">Create Listing</button>
+                                </Link>
                                 <div className="seller-listings">{products}</div>
                             </div>
                         }

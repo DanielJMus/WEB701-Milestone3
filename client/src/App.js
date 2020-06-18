@@ -6,6 +6,7 @@ import Product from './Components/product-content.js';
 import Contact from './Components/contact-content.js';
 import Login from './Components/database/log-in/login-content.js';
 import Register from './Components/register-content.js';
+import CreateListing from './Components/createListing-content.js';
 import Dashboard from './Components/database/admin/dashboard-content.js';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 
@@ -24,6 +25,7 @@ class App extends React.Component {
             {/* <Route path="/about/" component={About} /> */}
             <Route path="/product/:productID" component={Product}/>
             <Route path="/contact/" component={Contact} />
+            <Route path="/createListing/" component={CreateListing} />
             <Route path="/login/" component={Login}/>
             <Route path="/register/" component={Register}/>
             <Route path="/dashboard/" component={Dashboard} />

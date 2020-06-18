@@ -9,3 +9,16 @@
     padding:0;
     width:100%;
 }
+
+.create-listing {
+    transition: background-color 0.1s;
+    background-color:#ff9029;
+    height:40px;
+    width:130px;
+    border:0;
+    border-radius: 10px;
+}
+
+.create-listing:hover {
+    background-color:#ffad6a;
+}
