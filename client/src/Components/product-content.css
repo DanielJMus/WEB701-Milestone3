@@ -62,18 +62,36 @@ th {
     text-align: left;
 }
 
-.btn-bid {
+.bid-input 
+{
     float:right;
+    width:130px;
+}
+
+.btn-bid {
+    
     transition: background-color 0.1s;
     background-color:#ff9029;
     height:40px;
-    width:130px;
+    width:100%;
     border:0;
     border-radius: 10px;
 }
 
 .btn-bid:hover {
     background-color:#ffad6a;
+}
+
+.btn-bid-input
+{
+    box-sizing: border-box;
+    width:110px;
+    float:right;
+}
+
+.title {
+    width:50%;
+    float:left;
 }
 
 .login-note {
