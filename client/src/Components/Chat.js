@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import ChatBot, { Loading } from 'react-simple-chatbot';
+import ChatBot from 'react-simple-chatbot';
 
 import './Chat.css';
 
@@ -9,7 +9,7 @@ function parseInput (userInput)
     return userInput;
 }
 
-class Search extends React.Component {
+class Search extends Component {
     constructor (props)
     {
         super(props);
@@ -43,7 +43,7 @@ Search.defaultProps = {
     steps: undefined
 };
 
-class Chat extends React.Component {
+class Chat extends Component {
     render () {
         return (
         <ChatBot

@@ -3,7 +3,6 @@ import './home-content.css';
 
 import Navbar from './navbar';
 import {Footer} from './footer';
-import Chat from './Chat';
 import './Chat.css';
 
 import { login } from '../Actions/action';
@@ -14,7 +13,6 @@ export class Home extends React.Component {
         return (
             <div className="home-content">
                 <Navbar/>
-                <Chat/>
                 <br></br>
                 <br></br>
                 <h1>HOME PAGE</h1>

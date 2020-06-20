@@ -36,13 +36,21 @@ class CreateListing extends React.Component {
                 {/* Main form */}
                 { !this.state.submitted && this.props.isLoginSuccess && 
                     <form className="input-form" onSubmit={this.handleSubmit}>
-                        <h3>Name:</h3>
+                        <h3>Listing Name:</h3>
                         <input className="input-name" ref={(ref) => {this.Name = ref}} type="text" name="name"></input><br></br>
-                        <h3>Message:</h3>
-                        <textarea className="input-textarea" ref={(ref) => {this.Content = ref}} type="text" rows="15" name="content"></textarea><br></br>
+                        <h3>Description</h3>
+                        <textarea className="input-textarea" ref={(ref) => {this.Description = ref}} type="text" rows="15" name="description"></textarea><br></br>
+                        <h3>Fruit:</h3>
+                        <input className="input-name" ref={(ref) => {this.Fruit = ref}} type="text" name="fruit"></input><br></br>
+                        <h3>Sugar (g):</h3>
+                        <input className="input-name" ref={(ref) => {this.Sugar = ref}} type="number" name="sugar"></input><br></br>
+                        <h3>Calories:</h3>
+                        <input className="input-name" ref={(ref) => {this.Calories = ref}} type="number" name="calories"></input><br></br>
+                        <h3>Image URL:</h3>
+                        <input className="input-name" ref={(ref) => {this.URL = ref}} type="text" name="url"></input><br></br>
                         <input className="input-submit" type="submit" value="Submit"></input>
                     </form> 
-                }
+              }
 
                 {/* Submission confirmation */}
                 { this.state.submitted && 
@@ -62,7 +70,28 @@ class CreateListing extends React.Component {
     // Submit the mail message, opening the mail app with the contents of the form.
     handleSubmit(e) {
         e.preventDefault();
-        this.setState({submitted:true});
+        // Calculate price
+        fetch('http://localhost:4200/api/products', {
+            method: 'post',
+            headers: { 'Content-Type' : 'application/json' },
+            body: JSON.stringify({
+                "NAME": this.Name.value,
+                "DESCRIPTION": this.Description.value,
+                "PRICE": 0,
+                "CALORIES": this.Calories.value,
+                "FRUIT": this.Fruit.value,
+                "SUGAR": this.Sugar.value,
+                "IMG": this.URL.value,
+                "SELLERID": this.props.userID
+            })
+        }).then(res => {
+            if (res.status === 201) {
+                alert("Successfully created listing");
+                this.setState({submitted:true});
+            } else {
+                alert(res.status);
+            }
+        });
     }
 };
 

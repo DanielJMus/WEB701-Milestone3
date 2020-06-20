@@ -42,17 +42,24 @@ export class Bid extends React.Component {
     render () {
         const { product, bids } = this.state;
         if (product == null || bids == null) return null;
-        var bidcontent = bids.map(item =>
-            <tr>
-                <td>{item.USERNAME}</td>
-                <td>${item.PRICE}</td>
-            </tr>
-        )
+        var bidContent = ""
+        try {
+            bidContent = bids.map(item =>
+                <tr>
+                    <td>{item.USERNAME}</td>
+                    <td>${item.PRICE}</td>
+                </tr>
+            )
+        } catch (error)
+        {
+            bidContent = "";
+        }
         return (
             <div className="bid-box">
-                    { product && 
+                    { product && bids && 
                         <div className="bid-header">
-                            Current Bid: ${bids[0].PRICE}
+                            { (bidContent.length > 0) && <div className="title">Bid: ${bids[0].PRICE}</div> }
+                            { (bidContent.length == 0) &&<div className="title">Starting Price: ${product[0].PRICE}</div> }
                             { this.props.isLoginSuccess && 
                                 <button className="btn-bid">Place Bid</button>
                             }
@@ -66,7 +73,7 @@ export class Bid extends React.Component {
                                   <th>User</th>
                                   <th>Bid Amount</th>
                                 </tr>
-                                {bidcontent}
+                                {bidContent}
                             </table>
                         </div>
                     }

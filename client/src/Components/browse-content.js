@@ -34,8 +34,8 @@ class Browse extends React.Component {
 
     contentClickHandler = (e) => {
         const targetLink = e.target.closest('a');
-        const productTarget = "/product/" + targetLink.getAttribute('productID');
         if(!targetLink) return;
+        const productTarget = "/product/" + targetLink.getAttribute('productID');
         e.preventDefault();
         this.props.history.push(productTarget)
     }
@@ -51,7 +51,7 @@ class Browse extends React.Component {
                     </a>
                     <p className='section-description'>{item.DESCRIPTION}</p>
                 </div>
-                    <img className='section-image' src={item.IMG}/>
+                    <img alt="" className='section-image' src={item.IMG}/>
                 <div class='clear'/>
             </div>
         )

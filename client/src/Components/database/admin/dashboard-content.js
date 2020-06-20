@@ -87,7 +87,7 @@ class Dashboard extends React.Component {
                     </a>
                     <p className='section-description'>{item.DESCRIPTION}</p>
                 </div>
-                    <img className='section-image' src={item.IMG}/>
+                    <img alt="" className='section-image' src={item.IMG}/>
                 <div class='clear'/>
             </div>
         )

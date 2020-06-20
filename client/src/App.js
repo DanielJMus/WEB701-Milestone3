@@ -12,12 +12,14 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 import {login } from './Actions/action';
 import { connect } from 'react-redux';
+import Chat from './Components/Chat.js';
 
 
 class App extends React.Component {
   render () {
     return (
       <div>
+        {/* <Chat/> */}
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Home} />
