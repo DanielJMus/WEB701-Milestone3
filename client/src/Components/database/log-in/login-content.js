@@ -18,8 +18,12 @@ class Login extends React.Component {
         // If the user is already logged in, or has just logged in, redirect them to the home page.
         if (this.props.isLoginSuccess)
         {
-            var source = "/" + this.props.match.params.source.replace("_", "/");
-            return <Redirect push to={source} />;
+            if(this.props.match.params.source != null) {
+                var source = "/" + this.props.match.params.source.replace("_", "/");
+                return <Redirect push to={source} />;
+            } else {
+                return <Redirect push to={"/"}/>
+            }
         }
 
         return(

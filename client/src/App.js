@@ -28,7 +28,7 @@ class App extends React.Component {
             <Route path="/product/:productID" component={Product}/>
             <Route path="/contact/" component={Contact} />
             <Route path="/createListing/" component={CreateListing} />
-            <Route path="/login/:source" component={Login}/>
+            <Route path="/login/:source?" component={Login}/>
             <Route path="/register/" component={Register}/>
             <Route path="/dashboard/" component={Dashboard} />
           </Switch>
