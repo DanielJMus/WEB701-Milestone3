@@ -13,7 +13,7 @@ export class Bid extends React.Component {
             bid: 0,
             content: undefined
         }
-        this.handleValueChange = this.handleValueChange.bind(this)
+        this.submitBid = this.submitBid.bind(this);
     }
 
     GetProductData () {
@@ -42,15 +42,21 @@ export class Bid extends React.Component {
         this.GetBidData();
     }
 
-    handleValueChange(e) {
-        console.log(e.target.defaultValue);
-        if(parseFloat(e.target.value) < parseFloat(e.target.defaultValue))
-        {
-            
-        } else {
-            this.setState({bid: e.target.value});
-        }
-        
+    submitBid(e) {
+        e.preventDefault();
+
+        fetch('http://localhost:4200/api/bids', {
+            method: 'post',
+            headers: {'Content-Type':'application/json'},
+            body: JSON.stringify({
+             "PRODUCTID": this.props.productID,
+             "USERID": this.props.userID,
+             "PRICE": parseFloat(this.Bid.value).toFixed(2)
+            })
+        }).then(res => {
+            if (res.status === 201) alert("Successfully added bid.")
+            else alert(res.status)
+        });
     }
 
     render () {
@@ -64,7 +70,6 @@ export class Bid extends React.Component {
                     <td>${item.PRICE}</td>
                 </tr>
             )
-            console.log(this.state.bid);
         } catch (error)
         {
             bidContent = "";
@@ -76,10 +81,10 @@ export class Bid extends React.Component {
                             { (bidContent.length > 0) && <div className="title">Bid: ${bids[0].PRICE}</div> }
                             { (bidContent.length === 0) &&<div className="title">Starting Price: ${product[0].PRICE}</div> }
                             { this.props.isLoginSuccess && 
-                                <div className="bid-input">
-                                    $<input className="btn-bid-input" type="number" defaultValue={bids[0].PRICE} value={this.state.bid} onChange={this.handleValueChange} ></input>
-                                    <button className="btn-bid" onClick={this.submitBid}>Place Bid</button>
-                                </div>
+                                <form className="bid-input" onSubmit={this.submitBid}>
+                                    $<input ref={(ref) => {this.Bid = ref}} className="btn-bid-input" type="number" step='0.50' defaultValue={parseFloat(bids[0].PRICE) + 1}></input>
+                                    <input className="btn-bid" type="submit" value="Place Bid"/>
+                                </form>
                             }
                             { !this.props.isLoginSuccess &&
                                 <p className="login-note">Log in to bid on this product!</p>
@@ -106,7 +111,8 @@ const mapStateToProps = (state) => {
         isLoginPending: state.isLoginPending,
         isLoginSuccess: state.isLoginSuccess,
         isLoginError: state.isLoginError,
-        isSeller : state.isSeller
+        isSeller : state.isSeller,
+        userID: state.userID
     };
   }
   

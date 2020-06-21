@@ -7,6 +7,19 @@ import { login } from '../Actions/action';
 import { logout } from '../Actions/action';
 
 class Navbar extends React.Component {
+
+    constructor(props) {
+        super(props);
+        this.state = {
+            source: undefined,
+        }
+    }
+
+    componentDidMount () {
+        var src = window.location.pathname.replace("/", "").split("/").join("_");
+        this.setState({source: src});
+    }
+
     logout = (e) => {
         e.preventDefault();
         this.props.logout();
@@ -25,7 +38,8 @@ class Navbar extends React.Component {
                         {/* Display login button if user is not logged in */}
                         {
                             !this.props.isLoginSuccess &&
-                            <li className="nav-item"><Link to="/login">Login</Link></li>
+                            // <li className="nav-item"><a href="/" onClick={this.login}>Login</a></li>
+                            <li className="nav-item"><Link to={"/login/" + this.state.source}>Login</Link></li>
                         }
                         {/* Display admin panel button if the current user is an admin */}
                         {
