@@ -49,3 +49,15 @@
 h1 {
     text-align: center;
 }
+
+.home-banner {
+    width:60%;
+    margin: 0 auto;
+    display:block;
+}
+
+@media only screen and (max-width: 800px) {
+    .home-banner {
+        width:100%;
+    }
+  }

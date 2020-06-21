@@ -78,6 +78,10 @@ class Dashboard extends React.Component {
 
     render() {
         const { js } = this.state;
+        if (!this.props.isLoginSuccess)
+        {
+            this.props.history.push('/Login');
+        }
         if (js == null || !this.props.isLoginSuccess) return null;
         var products = this.props.isSeller && js.map(item => 
             <div className='listing-section'>

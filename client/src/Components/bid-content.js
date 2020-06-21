@@ -54,8 +54,14 @@ export class Bid extends React.Component {
              "PRICE": parseFloat(this.Bid.value).toFixed(2)
             })
         }).then(res => {
-            if (res.status === 201) alert("Successfully added bid.")
-            else alert(res.status)
+            if (res.status === 201) 
+            {
+                    alert("Successfully added bid.")
+                    this.GetProductData();
+                    this.GetBidData();
+            } else {
+                alert(res.status)
+            }
         });
     }
 
@@ -80,14 +86,14 @@ export class Bid extends React.Component {
                         <div className="bid-header">
                             { (bidContent.length > 0) && <div className="title">Bid: ${bids[0].PRICE}</div> }
                             { (bidContent.length === 0) &&<div className="title">Starting Price: ${product[0].PRICE}</div> }
-                            { this.props.isLoginSuccess && 
+                            { this.props.isLoginSuccess && !this.props.isSeller && 
                                 <form className="bid-input" onSubmit={this.submitBid}>
                                     $<input ref={(ref) => {this.Bid = ref}} className="btn-bid-input" type="number" step='0.50' defaultValue={parseFloat(bids[0].PRICE) + 1}></input>
                                     <input className="btn-bid" type="submit" value="Place Bid"/>
                                 </form>
                             }
-                            { !this.props.isLoginSuccess &&
-                                <p className="login-note">Log in to bid on this product!</p>
+                            { (!this.props.isLoginSuccess || this.props.isSeller) &&
+                                <p className="login-note">Log into a customer account to bid</p>
                             }
                             <br></br>
                             <br></br>

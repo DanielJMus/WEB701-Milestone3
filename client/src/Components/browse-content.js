@@ -45,14 +45,13 @@ class Browse extends React.Component {
         if (js == null) return null;
         var products = js.map(item => 
             <div className='section'>
+                <img alt="" className='section-image' src={item.IMG}/>
                 <div className='section-info'>
                     <a href="/" productID={item.ID}>
                         <h2 className='section-title' product-id={item.ID}>{item.NAME} | ${item.PRICE}</h2>
                     </a>
                     <p className='section-description'>{item.DESCRIPTION}</p>
                 </div>
-                    <img alt="" className='section-image' src={item.IMG}/>
-                <div class='clear'/>
             </div>
         )
         return (
@@ -60,10 +59,10 @@ class Browse extends React.Component {
                 <Navbar/>
                 <br></br>
                 <br></br>
-                <div className="modeling-content">
+                <div className="product-content">
                     <h1>Browse Products</h1>
 
-                    {js && <div className="content" onClick={this.contentClickHandler}>{products}</div>}
+                    {js && <div className="products" onClick={this.contentClickHandler}>{products}</div>}
 
                     <div className="clear"/>
                 </div>

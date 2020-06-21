@@ -15,7 +15,7 @@ export class Home extends React.Component {
                 <Navbar/>
                 <br></br>
                 <br></br>
-                <h1>HOME PAGE</h1>
+                <img className="home-banner" src={require("../Images/home-banner.jpg")}></img>
                 <Footer/>
             </div>
         );

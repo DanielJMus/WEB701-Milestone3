@@ -42,9 +42,16 @@ class Product extends React.Component {
                 <Navbar/>
                 <br></br>
                 <br></br>
+                { js && 
                 <div className="product-container">
-                    { js && <div className="product-header">{this.state.js[0].NAME}</div> }
+                    <div className="product-header">{this.state.js[0].NAME}</div> 
+                    <img className="product-image" src={this.state.js[0].IMG}/>
+                    <p><b>Fruit:</b> {this.state.js[0].FRUIT}</p>
+                    <p><b>Calories:</b> {this.state.js[0].CALORIES}</p>
+                    <p><b>Sugar:</b> {this.state.js[0].SUGAR} Grams</p>
                 </div>
+                }
+                
                 <div className="bid-container">
                     {js && <Bid productID={this.state.js[0].ID}/>}
                 </div>
