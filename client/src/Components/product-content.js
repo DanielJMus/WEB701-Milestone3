@@ -46,9 +46,11 @@ class Product extends React.Component {
                 <div className="product-container">
                     <div className="product-header">{this.state.js[0].NAME}</div> 
                     <img className="product-image" src={this.state.js[0].IMG}/>
-                    <p><b>Fruit:</b> {this.state.js[0].FRUIT}</p>
-                    <p><b>Calories:</b> {this.state.js[0].CALORIES}</p>
-                    <p><b>Sugar:</b> {this.state.js[0].SUGAR} Grams</p>
+                    <div className="product-info">
+                        <p><b>Fruit:</b> {this.state.js[0].FRUIT}</p>
+                        <p><b>Calories:</b> {this.state.js[0].CALORIES}</p>
+                        <p><b>Sugar:</b> {this.state.js[0].SUGAR} Grams</p>
+                    </div>
                 </div>
                 }
                 

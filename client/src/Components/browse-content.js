@@ -48,8 +48,9 @@ class Browse extends React.Component {
                 <img alt="" className='section-image' src={item.IMG}/>
                 <div className='section-info'>
                     <a href="/" productID={item.ID}>
-                        <h2 className='section-title' product-id={item.ID}>{item.NAME} | ${item.PRICE}</h2>
+                        <h2 className='section-title' product-id={item.ID}>{item.NAME}</h2>
                     </a>
+                    <h3 className='section-title'>${item.PRICE}</h3>
                     <p className='section-description'>{item.DESCRIPTION}</p>
                 </div>
             </div>

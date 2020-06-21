@@ -4,51 +4,46 @@ import ChatBot from 'react-simple-chatbot';
 
 import './Chat.css';
 
-function parseInput (userInput)
+// List of queries, synonyms are separated with a | symbol
+const loginQueries = ["can't|cannot|cant|trying to", "log in|login"]
+
+// Returns a percentage to 100 of confidence that user is making a specific query
+function CheckConfidence (input, keywords)
 {
-    return userInput;
-}
-
-class Search extends Component {
-    constructor (props)
+    var matchCounter = 0;
+    var matchMax = keywords.length;
+    for(var i = 0; i < keywords.length; i++)
     {
-        super(props);
-        this.state = {
-            userQuery: '',
-        };
+      // Check if keywords or their synonyms are in the text
+      if (keywords[i].split("|").some(v => input.toLowerCase().includes(v)))
+      {
+        matchCounter++;
+      }
     }
-
-    componentWillMount() {
-        const { steps } = this.props;
-        const { userQuery } = steps;
-
-        this.setState({userQuery});
-    }
-
-    render() {
-        const {userQuery} = this.state;
-        return (
-            <div style={{width:'100%'}}>
-                {parseInput(userQuery.value)}
-            </div>
-        );
-    }
+    return (matchCounter / matchMax) * 100;
 }
 
-Search.propTypes = {
-    steps: PropTypes.object,
-};
-
-Search.defaultProps = {
-    steps: undefined
-};
+// Returns an array featuring a message [0] and a nextStep value [1]
+function CheckMessage (steps)
+{
+  var userInput = steps.userQuery.value;
+  var confidence = CheckConfidence(userInput, loginQueries);
+  console.log("Login confidence: " + confidence);
+  if(confidence >= 50)
+  {
+    return ["It looks like you are trying to log in", "login"];
+  }
+  return userInput;
+}
 
 class Chat extends Component {
+
     render () {
         return (
         <ChatBot
         headerTitle="Helper Bot"
         recognitionEnable={true}
+        floating={true}
         style={{
             position:'fixed',
             right: 0,
@@ -62,7 +57,7 @@ class Chat extends Component {
           },
           {
             id: '2',
-            message: 'What are you looking for today?',
+            message: "What can I help you with?",
             trigger: 'userQuery',
           },
           {
@@ -71,10 +66,14 @@ class Chat extends Component {
             trigger: 'results'
           },
           {
-            id: 'results',
-            component: <Search/>,
-            asMessage: true,
+            id: 'login',
+            message: "I will now help you log into your account",
             trigger: 'confirm'
+          },
+          {
+            id: 'results',
+            message: ({steps}) => CheckMessage(steps)[0],
+            trigger: ({steps}) => CheckMessage(steps)[1]
           },
           {
             id: 'confirm',

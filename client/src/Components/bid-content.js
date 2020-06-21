@@ -45,6 +45,19 @@ export class Bid extends React.Component {
     submitBid(e) {
         e.preventDefault();
 
+        if (this.state.bids != null)
+        {
+            if (parseFloat(this.Bid.value) < parseFloat(this.state.bids[0].PRICE)) {
+                alert("Bid entered must be higher than current bid");
+                return;
+            }
+        } else {
+            if (parseFloat(this.Bid.value) < parseFloat(this.state.product[0].PRICE)) {
+                alert("Bid entered must be higher than starting price");
+                return;
+            }
+        }
+
         fetch('http://localhost:4200/api/bids', {
             method: 'post',
             headers: {'Content-Type':'application/json'},
@@ -97,13 +110,18 @@ export class Bid extends React.Component {
                             }
                             <br></br>
                             <br></br>
-                            <table>
-                                <tr>
-                                  <th>User</th>
-                                  <th>Bid Amount</th>
-                                </tr>
-                                {bidContent}
-                            </table>
+                            { bidContent.length > 0 && 
+                                <table>
+                                    <tr>
+                                      <th>User</th>
+                                      <th>Bid Amount</th>
+                                    </tr>
+                                    {bidContent}
+                                </table>
+                            }
+                            { bidContent.length === 0 && 
+                                <p className="no-bids">Be the first to bid on this product</p>
+                            }
                         </div>
                     }
             </div>

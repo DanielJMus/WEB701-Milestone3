@@ -46,28 +46,28 @@ VALUES  ('Daniel Musgrave', 'danielmus1999@hotmail.com', 'Password1', 1),
 		('Bob Stevenson', 'bob@gmail.com', 'bob', 0);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, CALORIES, FRUIT, SUGAR, IMG, SELLERID) 
-VALUES  ('Fresh Orange Juice 1', 'Tastes just about real!', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
+VALUES  ('Fresh Orange Juice 1', 'Short Product Description', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, CALORIES, FRUIT, SUGAR, IMG, SELLERID) 
-VALUES  ('Fresh Orange Juice 2', 'Tastes just about real!', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
+VALUES  ('Fresh Orange Juice 2', 'Short Product Description', 100.00, 50, "Orange", 9.35, "https://images.unsplash.com/photo-1573500883495-6c9b16d88d8c", 2);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, CALORIES, FRUIT, SUGAR, IMG, SELLERID) 
-VALUES  ('Fresh Orange Juice 3', 'Tastes just about real!', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
+VALUES  ('Apple Juice', 'Short Product Description', 100.00, 52, "Apple", 9, "https://images.unsplash.com/photo-1591735161367-577be05bc331", 2);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, CALORIES, FRUIT, SUGAR, IMG, SELLERID) 
-VALUES  ('Fresh Orange Juice 4', 'Tastes just about real!', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
+VALUES  ('Fresh Orange Juice 4', 'Short Product Description', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, CALORIES, FRUIT, SUGAR, IMG, SELLERID) 
-VALUES  ('Fresh Orange Juice', 'Tastes just about real!', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
+VALUES  ('Fresh Orange Juice', 'Short Product Description', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, CALORIES, FRUIT, SUGAR, IMG, SELLERID) 
-VALUES  ('Fresh Orange Juice', 'Tastes just about real!', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
+VALUES  ('Fresh Orange Juice', 'Short Product Description', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, CALORIES, FRUIT, SUGAR, IMG, SELLERID) 
-VALUES  ('Fresh Orange Juice', 'Tastes just about real!', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
+VALUES  ('Fresh Orange Juice', 'Short Product Description', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, CALORIES, FRUIT, SUGAR, IMG, SELLERID) 
-VALUES  ('Fresh Orange Juice', 'Tastes just about real!', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
+VALUES  ('Fresh Orange Juice', 'Short Product Description', 100.00, 50, "Orange", 9.35, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
 
 
 
