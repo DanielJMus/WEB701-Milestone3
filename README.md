@@ -2,6 +2,8 @@
 
 ## Project Setup
 
+Firstly, ensure that you run the DatabaseCreationQuery file using MySQL, and make sure that your server/config.js file matches your database settings.
+
 First, start the server by entering the server folder and running 
 ```
 node restful.js
