@@ -1,15 +1,7 @@
-# WEB701-Milestone3
+# TO RUN THIS PROJECT
 
-## Project Setup
+Firstly, ensure that you run the WEBDBCreation.sql query using MySQL, and make sure that your server/config.js file matches your database settings (which it should if you're using the default root/root username and password settings).
 
-Firstly, ensure that you run the DatabaseCreationQuery file using MySQL, and make sure that your server/config.js file matches your database settings.
+Secondly, run ```npm install``` inside both the client and server folders, to ensure that all dependancies are installed for the project to run.
 
-First, start the server by entering the server folder and running 
-```
-node restful.js
-```
-
-Secondly, move to the client folder and start the site by running
-```
-npm start
-```
+Lastly, start the server and the client using the ```npm start``` commands, the website should now function correctly.
