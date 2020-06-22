@@ -128,7 +128,7 @@ class Chat extends Component {
 
     Login = (steps) => {
       this.props.login(steps.email.value, steps.password.value);
-      return "Done! You should now be logged in :)";
+      return "Done! You should now be logged in.";
     }
 
 
