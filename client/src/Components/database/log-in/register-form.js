@@ -3,6 +3,8 @@ import React from 'react'
 import { login } from '../../../Actions/action';
 import { connect } from 'react-redux';
 
+const bcrypt = require('bcryptjs');
+
 class RegisterForm extends React.Component {
     
     constructor() {
@@ -18,17 +20,30 @@ class RegisterForm extends React.Component {
     // Submit the form data, adding the specified user data to the database.
     handleSubmit(event) {
         event.preventDefault();
-        fetch('http://localhost:4200/api/users', {
-            method: 'post',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify({
-             "USERNAME": this.Name.value,
-             "EMAIL": this.Email.value,
-             "PASSWORD": this.Password.value
-            })
-        }).then(res => {
-            if (res.status === 201) alert("Successfully created account.")
-            else alert(res.status)
+        let username = this.Name.value;
+        let email = this.Email.value;
+        bcrypt.hash(this.Password.value, 10, function(err, hash) {
+            console.log(hash);
+            fetch('http://localhost:4200/api/users', {
+                method: 'post',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({
+                 "USERNAME": username,
+                 "EMAIL": email,
+                 "PASSWORD": hash
+                })
+            }).then(res => {
+                if (res.status === 201) alert("Successfully created account.")
+                res.json().then(json => {
+                    var errno = json["error"]["errno"];
+                    if (errno === 1062)
+                    {
+                        alert("Sorry, this email is already registered");
+                    } else {
+                        alert(errno);
+                    }
+                })
+            });
         });
     }
      

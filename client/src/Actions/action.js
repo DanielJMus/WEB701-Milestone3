@@ -3,6 +3,7 @@ export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 export const IS_SELLER = 'IS_SELLER';
 export const USER_ID = 'USER_ID';
+const bcrypt = require('bcryptjs');
 
 // Whether the site is waiting for the user to try logging in
 export function setLoginPending(isLoginPending) {
@@ -89,11 +90,17 @@ function sendLoginRequest (email, password) {
         }).then(res =>
             res.json().then(json => {
                 if(json.length > 0) {
-                    if(json[0].PASSWORD === password) {
-                        return resolve(json[0]);
-                    }
+                    console.log("Password: " + json[0].PASSWORD);
+                    bcrypt.compare(password, json[0].PASSWORD).then((result) => {
+                        console.log(result);
+                        if (result) {
+                            return resolve(json[0]);
+                        } else {
+                            return reject(new Error("Invalid username or password"));
+                        }
+                    });
                 }
-                return reject(new Error("Invalid username or password"));
+                
             })
         );
     });

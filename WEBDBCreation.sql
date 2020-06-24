@@ -44,9 +44,9 @@ ALTER TABLE users
     ADD CONSTRAINT PASSWORD_LEN_CHECK CHECK (LENGTH(PASSWORD) > 1);
 
 INSERT INTO users (USERNAME, EMAIL, PASSWORD, USERTYPE) 
-VALUES  ('Daniel Musgrave', 'danielmus1999@hotmail.com', 'Password1', 1),
-		('Admin', 'Admin@gmail.com', 'Admin', 1),
-		('Bob Stevenson', 'bob@gmail.com', 'bob', 0);
+VALUES  ('Daniel Musgrave', 'danielmus1999@hotmail.com', '$2a$10$K856ecdI9MeygsCpyPS4R.IJUTteKAQRRxLZUPjIQ3lXOwPmAXL5i', 1),
+		('Admin', 'Admin@gmail.com', '$2a$10$u6iyb3dQI4.4K37QBvHKRueVKn6tJAqD6TjG4zLjH2YfbrTFUwr9e', 1),
+		('Bob Stevenson', 'bob@gmail.com', '$2a$10$l3ee7869Yy7gHweCKsjrr.x9gcSt9GjfCy6P1Wyp8RFc7K8fo3iuW', 0);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, FRUIT, ENERGY, CARBOHYDRATES, SUGAR, SODIUM, VITAMINC, IMG, SELLERID) 
 VALUES  ('Premium Orange Juice', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
