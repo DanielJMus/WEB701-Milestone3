@@ -5,7 +5,7 @@ function GetAllProducts(req, res) {
         knex
     } = req.app.locals
     knex
-        .select('ID','NAME', 'DESCRIPTION', 'PRICE', 'CALORIES', 'FRUIT', 'SUGAR', 'IMG', 'SELLERID')
+        .select('ID','NAME', 'DESCRIPTION', 'PRICE', 'FRUIT', 'ENERGY', 'CARBOHYDRATES', 'SUGAR', 'SODIUM', 'VITAMINC', 'IMG', 'SELLERID')
         .from('products')
         .then(data => res.status(200).json(data))
         .catch(error => res.status(500).json(error))
@@ -21,7 +21,7 @@ function GetProduct(req, res) {
         id
     } = req.params
     knex
-        .select('ID','NAME', 'DESCRIPTION', 'PRICE', 'CALORIES', 'FRUIT', 'SUGAR', 'IMG', 'SELLERID')
+    .select('ID','NAME', 'DESCRIPTION', 'PRICE', 'FRUIT', 'ENERGY', 'CARBOHYDRATES', 'SUGAR', 'SODIUM', 'VITAMINC', 'IMG', 'SELLERID')
         .from('products')
         .where({
             id: `${id}`
@@ -45,7 +45,7 @@ function GetAllSellerListings (req, res)
         id
     } = req.params
     knex
-    .select('ID','NAME', 'DESCRIPTION', 'PRICE', 'CALORIES', 'FRUIT', 'SUGAR', 'IMG', 'SELLERID')
+    .select('ID','NAME', 'DESCRIPTION', 'PRICE', 'FRUIT', 'ENERGY', 'CARBOHYDRATES', 'SUGAR', 'SODIUM', 'VITAMINC', 'IMG', 'SELLERID')
     .from('products')
     .where({
         SELLERID: `${id}`
@@ -67,7 +67,7 @@ function PostProduct(req, res) {
         knex
     } = req.app.locals
     const payload = req.body
-    const mandatoryColumns = ['NAME', 'DESCRIPTION', 'PRICE', 'CALORIES', 'FRUIT', 'SUGAR', 'IMG', 'SELLERID']
+    const mandatoryColumns = ['NAME', 'DESCRIPTION', 'PRICE', 'FRUIT', 'ENERGY', 'CARBOHYDRATES', 'SUGAR', 'SODIUM', 'VITAMINC', 'IMG', 'SELLERID']
     const payloadKeys = Object.keys(payload)
     const mandatoryColumnsExists = mandatoryColumns.every(mc => payloadKeys.includes(mc))
     if (mandatoryColumnsExists) {

@@ -48,8 +48,11 @@ class Product extends React.Component {
                     <img className="product-image" src={this.state.js[0].IMG}/>
                     <div className="product-info">
                         <p><b>Fruit:</b> {this.state.js[0].FRUIT}</p>
-                        <p><b>Calories:</b> {this.state.js[0].CALORIES}</p>
-                        <p><b>Sugar:</b> {this.state.js[0].SUGAR} Grams</p>
+                        <p><b>Energy:</b> {this.state.js[0].ENERGY} Kcal</p>
+                        <p><b>Carbohydrates:</b> {this.state.js[0].CARBOHYDRATES}g</p>
+                        <p><b>Sugar:</b> {this.state.js[0].SUGAR}g</p>
+                        <p><b>Sodium:</b> {this.state.js[0].SODIUM}mg</p>
+                        <p><b>Vitamin C:</b> {this.state.js[0].VITAMINC}mg</p>
                     </div>
                 </div>
                 }

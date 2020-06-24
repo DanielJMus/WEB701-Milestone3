@@ -51,7 +51,7 @@ class Browse extends React.Component {
                     <a href="/" productID={item.ID}>
                         <h2 className='section-title' product-id={item.ID}>{item.NAME}</h2>
                     </a>
-                    <h3 className='section-title'>${item.PRICE}</h3>
+                    <h3 className='section-title'>${item.PRICE} / L</h3>
                     <p className='section-description'>{item.DESCRIPTION}</p>
                 </div>
             </div>

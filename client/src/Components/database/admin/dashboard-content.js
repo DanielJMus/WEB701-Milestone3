@@ -85,16 +85,16 @@ class Dashboard extends React.Component {
         }
         if (js == null || !this.props.isLoginSuccess) return null;
         var products = this.props.isSeller && js.map(item => 
-            <div className='listing-section'>
-                <div className='section-info'>
-                    <a href="/" productID={item.ID}>
-                        <h2 className='section-title' product-id={item.ID}>{item.NAME} | ${item.PRICE}</h2>
-                    </a>
-                    <p className='section-description'>{item.DESCRIPTION}</p>
-                </div>
+                <div className="section">
                     <img alt="" className='section-image' src={item.IMG}/>
-                <div class='clear'/>
-            </div>
+                    <div className='section-info'>
+                        <a href="/" productID={item.ID}>
+                            <h2 className='section-title' product-id={item.ID}>{item.NAME} | ${item.PRICE}</h2>
+                        </a>
+                        <p className='section-description'>{item.DESCRIPTION}</p>
+                    </div>
+                    <div class='clear'/>
+                </div>
         )
         return(
             <div className="content">

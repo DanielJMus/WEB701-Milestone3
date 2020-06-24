@@ -1,0 +1,9 @@
+.input-submit{
+    cursor: pointer;
+    transition: background-color 0.1s;
+    background-color:#ff9029;
+    height:40px;
+    width:130px;
+    border:0;
+    border-radius: 10px;
+}
