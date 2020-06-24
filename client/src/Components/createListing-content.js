@@ -88,7 +88,7 @@ class CreateListing extends React.Component {
             body: JSON.stringify({
                 "NAME": this.Name.value,
                 "DESCRIPTION": this.Description.value,
-                "PRICE": 0,
+                "PRICE": this.state.priceEstimation,
                 "FRUIT": this.Fruit.value,
                 "ENERGY": this.Energy.value,
                 "CARBOHYDRATES": this.Carbohydrates.value,
