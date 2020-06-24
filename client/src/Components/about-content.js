@@ -1,6 +1,5 @@
 import React from 'react';
 import './register-content.css';
-import RegisterForm from './database/log-in/register-form';
 
 import Navbar from './navbar';
 import { Footer } from './footer';
@@ -9,15 +8,18 @@ import { connect } from 'react-redux';
 import { login } from '../Actions/action';
 
 class Register extends React.Component {
+
+    componentWillMount ()
+    {
+        document.title = "About | Fresh Fruit Juice";
+    }
+
     render () {
         return (
             <div className="content">
                 <Navbar/>
                 <br></br>
                 <br></br>
-                <div className="register-form">
-                    <RegisterForm/>
-                </div>
                 <Footer/>
             </div>
         );

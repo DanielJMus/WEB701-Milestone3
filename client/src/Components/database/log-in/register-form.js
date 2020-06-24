@@ -10,6 +10,11 @@ class RegisterForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentWillMount ()
+    {
+        document.title = "Register | Fresh Fruit Juice";
+    }
+
     // Submit the form data, adding the specified user data to the database.
     handleSubmit(event) {
         event.preventDefault();

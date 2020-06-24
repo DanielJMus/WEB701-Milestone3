@@ -29,6 +29,7 @@ class Browse extends React.Component {
     }
 
     componentDidMount () {
+        document.title = "Browse | Fresh Fruit Juice";
         this.GetJsonData();
     }
 

@@ -17,6 +17,11 @@ class Contact extends React.Component {
         }
     }
 
+    componentWillMount ()
+    {
+        document.title = "Contact | Fresh Fruit Juice";
+    }
+
     render () {
         return (
             <div className="content">

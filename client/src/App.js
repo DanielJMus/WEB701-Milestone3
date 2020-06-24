@@ -2,7 +2,7 @@ import React from 'react';
 import Home from './Components/home-content.js';
 import Browse from './Components/browse-content.js';
 import Product from './Components/product-content.js';
-// import About from './Components/about-content.js';
+import About from './Components/about-content.js';
 import Contact from './Components/contact-content.js';
 import Login from './Components/database/log-in/login-content.js';
 import Register from './Components/register-content.js';
@@ -24,7 +24,7 @@ class App extends React.Component {
           <Switch>
             <Route path="/" exact component={Home} />
             <Route path="/browse/" component={Browse} />
-            {/* <Route path="/about/" component={About} /> */}
+            <Route path="/about/" component={About} />
             <Route path="/product/:productID" component={Product}/>
             <Route path="/contact/" component={Contact} />
             <Route path="/createListing/" component={CreateListing} />

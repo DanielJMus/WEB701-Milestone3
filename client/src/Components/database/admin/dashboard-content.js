@@ -56,6 +56,7 @@ class Dashboard extends React.Component {
     }
 
     componentDidMount () {
+        document.title = "Dashboard | Fresh Fruit Juice";
         this.GetJsonData();
     }
 

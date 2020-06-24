@@ -9,6 +9,12 @@ import { login } from '../Actions/action';
 import { connect } from 'react-redux';
 
 export class Home extends React.Component {
+
+    componentWillMount ()
+    {
+        document.title = "Fresh Fruit Juice";
+    }
+
     render () {
         return (
             <div className="home-content">

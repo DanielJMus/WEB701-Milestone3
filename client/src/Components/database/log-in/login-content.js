@@ -14,6 +14,11 @@ class Login extends React.Component {
         this.state = { }
     }
 
+    componentWillMount ()
+    {
+        document.title = "Log in | Fresh Fruit Juice";
+    }
+
     render() {
         // If the user is already logged in, or has just logged in, redirect them to the home page.
         if (this.props.isLoginSuccess)
