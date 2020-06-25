@@ -11,6 +11,26 @@ function GetAllProducts(req, res) {
         .catch(error => res.status(500).json(error))
 }
 
+/* List all products with certain fruit */
+function SearchProducts(req, res) {
+    // Destructuring 
+    const {
+        knex
+    } = req.app.locals
+    const {
+        search
+    } = req.params
+    knex
+        .select('ID','NAME', 'DESCRIPTION', 'PRICE', 'FRUIT', 'ENERGY', 'CARBOHYDRATES', 'SUGAR', 'SODIUM', 'VITAMINC', 'IMG', 'SELLERID')
+        .from('products')
+        .where('FRUIT', 'like', `%${search}%`)
+        .orWhere('NAME', 'like', `%${search}%`)
+        .orWhere('DESCRIPTION', 'like', `%${search}`)
+        .then(data => res.status(200).json(data))
+        .catch(error => res.status(500).json(error))
+}
+
+
 /* List information for a single product */
 function GetProduct(req, res) {
     // Destructuring 
@@ -125,6 +145,7 @@ function DeleteProduct(req, res) {
 
 module.exports = {
     GetAllProducts,
+    SearchProducts,
     GetAllSellerListings,
     GetProduct,
     PostProduct,

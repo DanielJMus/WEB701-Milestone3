@@ -19,7 +19,15 @@ class Browse extends React.Component {
 
     // Retrieve the JSON data of all the model posts
     GetJsonData () {
-        fetch('http://localhost:4200/api/products/', {
+
+        var url = "http://localhost:4200/api/";
+        if(this.props.match.params.search != null) {
+            url += "fruitproducts/" + this.props.match.params.search.toLowerCase();
+        } else {
+            url += 'products'
+        }
+
+        fetch(url, {
             method: 'get'
         }).then(res =>
             res.json().then(json => {
@@ -36,7 +44,7 @@ class Browse extends React.Component {
     contentClickHandler = (e) => {
         const targetLink = e.target.closest('a');
         if(!targetLink) return;
-        const productTarget = "/product/" + targetLink.getAttribute('productID');
+        const productTarget = "/product/" + targetLink.getAttribute('productid');
         e.preventDefault();
         this.props.history.push(productTarget)
     }
@@ -48,7 +56,7 @@ class Browse extends React.Component {
             <div className='section'>
                 <img alt="" className='section-image' src={item.IMG}/>
                 <div className='section-info'>
-                    <a href="/" productID={item.ID}>
+                    <a href="/" productid={item.ID}>
                         <h2 className='section-title' product-id={item.ID}>{item.NAME}</h2>
                     </a>
                     <h3 className='section-title'>${item.PRICE} / L</h3>

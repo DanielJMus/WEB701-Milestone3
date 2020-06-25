@@ -33,6 +33,7 @@ router.delete('/users/:id', routes.UserRoutes.DeleteUser);
 
 router.get('/products', routes.ProductRoutes.GetAllProducts);
 router.get('/products/:id', routes.ProductRoutes.GetProduct);
+router.get('/fruitproducts/:search', routes.ProductRoutes.SearchProducts);
 router.get('/listings/:id', routes.ProductRoutes.GetAllSellerListings);
 router.post('/products', jsonParser, routes.ProductRoutes.PostProduct);
 router.put('/products/:id', jsonParser, routes.ProductRoutes.UpdateProduct);

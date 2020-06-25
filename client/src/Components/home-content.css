@@ -56,6 +56,37 @@ h1 {
     display:block;
 }
 
+.searchbar-container
+{
+    border-radius: 20px;
+    width:60%;
+    padding-top:20px;
+    padding-bottom:20px;
+    margin: 0 auto;
+    display:block;
+    margin-top:30px;
+    margin-bottom:30px;
+    background-color: #ff9029;
+}
+
+.search-header {
+    color:white;
+    margin: 0;
+    float:left;
+    margin-left:40px;
+}
+
+.searchbar
+{
+    border:0;
+    border-radius:10px;
+    font-size: 20px;
+    margin-right:20px;
+    float:right;
+    height:35px;
+    width:40%;
+}
+
 @media only screen and (max-width: 800px) {
     .home-banner {
         width:100%;

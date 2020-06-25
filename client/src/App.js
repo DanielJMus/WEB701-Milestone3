@@ -23,7 +23,7 @@ class App extends React.Component {
         <BrowserRouter>
           <Switch>
             <Route path="/" exact component={Home} />
-            <Route path="/browse/" component={Browse} />
+            <Route path="/browse/:search?" component={Browse} />
             <Route path="/about/" component={About} />
             <Route path="/product/:productID" component={Product}/>
             <Route path="/contact/" component={Contact} />
