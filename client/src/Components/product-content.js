@@ -15,6 +15,7 @@ class Product extends React.Component {
         super();
         this.state = {
             js: undefined,
+            seller: undefined,
             content: undefined
         }
     }
@@ -26,7 +27,17 @@ class Product extends React.Component {
         }).then(res =>
             res.json().then(json => {
                 this.setState({ js: json});
-                console.log(json);
+                this.GetSellerData();
+            })
+        );
+    }
+
+    GetSellerData () {
+        fetch('http://localhost:4200/api/seller/' + this.state.js[0].SELLERID, {
+            method: 'get'
+        }).then(res =>
+            res.json().then(json => {
+                this.setState({ seller: json});
             })
         );
     }
@@ -36,23 +47,28 @@ class Product extends React.Component {
     }
 
     render () {
-        const { js } = this.state;
+        const { js, seller } = this.state;
         return (
             <div className="content">
                 <Navbar/>
                 <br></br>
                 <br></br>
-                { js && 
+                { js && seller &&
                 <div className="product-container">
-                    <div className="product-header">{this.state.js[0].NAME}</div> 
-                    <img className="product-image" src={this.state.js[0].IMG}/>
+                    <div className="product-header">{js[0].NAME}</div> 
+                    <img className="product-image" src={js[0].IMG}/>
                     <div className="product-info">
-                        <p><b>Fruit:</b> {this.state.js[0].FRUIT}</p>
-                        <p><b>Energy:</b> {this.state.js[0].ENERGY} Kcal</p>
-                        <p><b>Carbohydrates:</b> {this.state.js[0].CARBOHYDRATES}g</p>
-                        <p><b>Sugar:</b> {this.state.js[0].SUGAR}g</p>
-                        <p><b>Sodium:</b> {this.state.js[0].SODIUM}mg</p>
-                        <p><b>Vitamin C:</b> {this.state.js[0].VITAMINC}mg</p>
+                        <p><b>Fruit:</b> {js[0].FRUIT}</p>
+                        <p><b>Energy:</b> {js[0].ENERGY} Kcal</p>
+                        <p><b>Carbohydrates:</b> {js[0].CARBOHYDRATES}g</p>
+                        <p><b>Sugar:</b> {js[0].SUGAR}g</p>
+                        <p><b>Sodium:</b> {js[0].SODIUM}mg</p>
+                        <p><b>Vitamin C:</b> {js[0].VITAMINC}mg</p>
+                    </div>
+                    <div className="product-seller">
+                        <p><b>Seller:</b> {seller[0].USERNAME}</p>
+                        {/* <p><b>Email:</b> <a href="mailto:danielmus1999@hotmail.com?subject=Inquiry%20from%20{this.Name.value}&body={this.Content.value}">{seller[0].EMAIL}</a></p> */}
+                        <p><b>Email:</b> <a href={`mailto:danielmus1999@hotmail.com?subject=Inquiry%20about%20${js[0].NAME}`}>{seller[0].EMAIL}</a></p>
                     </div>
                 </div>
                 }

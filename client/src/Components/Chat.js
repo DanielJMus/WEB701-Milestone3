@@ -7,6 +7,8 @@ import { login } from '../Actions/action';
 
 import './Chat.css';
 
+const bcrypt = require('bcryptjs');
+
 class EmailCheck extends Component {
   constructor (props) {
     super(props);
@@ -63,18 +65,22 @@ class PasswordCheck extends Component {
     const { steps } = this.props;
     const email = steps.email.value;
     const password = steps.password.value;
+    var self = this;
     fetch('http://localhost:4200/api/users/' + email, {
       method: 'get'
     }).then(res =>
       res.json().then(json => {
           if(json.length > 0) {
-              if(json[0].PASSWORD === password) {
-                  this.setState({triggerValue: 'password-success'});
+
+            bcrypt.compare(password, json[0].PASSWORD, function(err, result) {
+              if (result) {
+                self.setState({triggerValue: 'password-success'});
               } else {
-                this.setState({triggerValue: 'password-fail'});
+                self.setState({triggerValue: 'password-fail'});
               }
+              self.triggerNext();
+            });
           }
-          this.triggerNext();
       })
   );
   }
@@ -87,8 +93,6 @@ class PasswordCheck extends Component {
 
 
 
-// List of queries, synonyms are separated with a | symbol
-const loginQueries = ["struggling to|can't|cannot|cant|trying to", "log in|login|log into"]
 
 // Returns a percentage to 100 of confidence that user is making a specific query
 function CheckConfidence (input, keywords)
@@ -103,20 +107,31 @@ function CheckConfidence (input, keywords)
         matchCounter++;
       }
     }
+    // Returns a percentage of how much the input matches the keywords
     return (matchCounter / matchMax) * 100;
 }
+
+
+// List of queries, synonyms are separated with a | symbol
+const loginQueries = ["struggling to|can't|cannot|cant|trying to", "log in|login|log into|logging into"]
+const contactAdminQueries = ["want to|can i|wanna|like to", "speak|talk|contact", "admin|owner|manager"]
 
 // Returns an array featuring a message [0] and a nextStep value [1]
 function CheckMessage (steps)
 {
   var userInput = steps.userQuery.value;
-  var confidence = CheckConfidence(userInput, loginQueries);
-  console.log("Login confidence: " + confidence);
-  if(confidence >= 50)
+  // Check confidence in what the user is asking, this is easy to extend.
+  var loginConfidence = CheckConfidence(userInput, loginQueries);
+  var contactConfidence = CheckConfidence(userInput, contactAdminQueries);
+  if(loginConfidence >= 50)
   {
     return ["Please tell me your email address and I will check if it is valid", "email"];
+  } 
+  else if (contactConfidence >= 50) 
+  {
+    return ["You can contact the site owners by heading to the 'Contact' page, it's up in the navigation bar at the top of the page. :)", "confirm-1"];
   }
-  return userInput;
+  return ["Sorry, I don't quite understand what you're asking", "2"];
 }
 
 class Chat extends Component {
@@ -249,7 +264,7 @@ class Chat extends Component {
           },
           { 
             id: 'confirm-no',
-            message: "Sorry to hear that, perhaps try rephrasing and maybe I can find something for you!",
+            message: "Sorry to hear that, perhaps try rephrasing your query and maybe I can find something for you!",
             trigger: 2
           }
       

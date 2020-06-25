@@ -1,0 +1,14 @@
+.about-content {
+    width:80%;
+    margin: 0 auto;
+}
+
+.about-text{
+    width:80%;
+    float:left;
+}
+
+.about-img{
+    float:right;
+    width:20%;
+}

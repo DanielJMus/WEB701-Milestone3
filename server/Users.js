@@ -21,7 +21,7 @@ function GetUser(req, res) {
         id
     } = req.params
     knex
-        .select('ID','USERNAME', 'EMAIL', 'PASSWORD', 'USERTYPE')
+        .select('ID','USERNAME', 'EMAIL', 'USERTYPE')
         .from('users')
         .where({
             id: `${id}`

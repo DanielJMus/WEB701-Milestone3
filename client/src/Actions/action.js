@@ -90,7 +90,6 @@ function sendLoginRequest (email, password) {
         }).then(res =>
             res.json().then(json => {
                 if(json.length > 0) {
-                    console.log("Password: " + json[0].PASSWORD);
                     bcrypt.compare(password, json[0].PASSWORD).then((result) => {
                         console.log(result);
                         if (result) {

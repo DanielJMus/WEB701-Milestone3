@@ -27,6 +27,7 @@ const routes = require('./routes')
 // API Routing
 router.get('/users', routes.UserRoutes.GetAllUsers);
 router.get('/users/:email', routes.UserRoutes.GetUserLogin);
+router.get('/seller/:id', routes.UserRoutes.GetUser);
 router.post('/users', jsonParser, routes.UserRoutes.PostUser);
 router.put('/users/:id', jsonParser, routes.UserRoutes.UpdateUser);
 router.delete('/users/:id', routes.UserRoutes.DeleteUser);
