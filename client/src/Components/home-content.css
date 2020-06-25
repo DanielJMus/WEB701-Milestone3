@@ -74,6 +74,7 @@ h1 {
     margin: 0;
     float:left;
     margin-left:40px;
+    font-size:23px;
 }
 
 .searchbar
@@ -87,8 +88,46 @@ h1 {
     width:40%;
 }
 
+.home-section2
+{
+    margin: 0 auto;
+    width:60%;
+}
+
+.home-section2-img
+{
+    border-radius: 10px;
+    width:40%;
+    float:left;
+    margin-right:30px;
+}
+
+.home-intro
+{
+    margin:20px;
+}
+
 @media only screen and (max-width: 800px) {
     .home-banner {
         width:100%;
     }
-  }
+}
+
+@media only screen and (max-width: 995px) {
+
+    .searchbar-container {
+        text-align:center;
+    }
+
+    .search-header {
+      width:100%;
+      margin:0 auto;
+      margin-bottom:20px;
+    }
+
+    .searchbar {
+        margin:0 auto;
+        float: none;
+        width:80%;
+    }
+}

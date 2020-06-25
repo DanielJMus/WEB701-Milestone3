@@ -7,9 +7,10 @@ export class Footer extends React.Component {
         return (
             <div className="footer">
                 <ul className="footer-list">
-                    <li className="footer-item"><a href="">Facebook</a></li> 
-                    <li className="footer-item"><a href="">Twitter</a></li> 
+                    <li className="footer-item"><a href="/">Facebook</a></li> 
+                    <li className="footer-item"><a href="/">Twitter</a></li> 
                     <li className="footer-item"><Link to="/contact">Contact</Link></li> 
+                    <p style={{color: '#888'}}><i>Images sourced from Unsplash.com</i></p>
                 </ul>
             </div>
         );

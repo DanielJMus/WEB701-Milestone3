@@ -52,6 +52,17 @@ export class Home extends React.Component {
                     <input className="searchbar" type="text" onKeyPress={this.checkSearch}  placeholder="Search.."/>
                     <div className="clear"></div>
                 </div>
+                <div className="home-section2">
+                    <img className="home-section2-img" src="https://images.unsplash.com/photo-1559916712-ae4427996e1d"></img>
+                    <p className="home-intro">
+                        <h2>Who is Fresh Fruit Juice?</h2>
+                        Having helped many local juice producers get started, our goal is to provide a collaborative central hub for all local NZ juice manufacturers to promote and sell their products with customers.
+                        <br></br>
+                        <br></br>
+                        We strive to promote only the healthiest of juice products to advocate for NZ's pure, organic produce.
+                    </p>
+                    <div className="clear"></div>
+                </div>
                 <Footer/>
             </div>
         );

@@ -97,8 +97,8 @@ export class Bid extends React.Component {
             <div className="bid-box">
                     { product && bids && 
                         <div className="bid-header">
-                            { (bidContent.length > 0) && <div className="title">Bid: ${bids[0].PRICE}</div> }
-                            { (bidContent.length === 0) &&<div className="title">Starting Price: ${product[0].PRICE}</div> }
+                            { (bidContent.length > 0) && <div className="title">Bid: ${bids[0].PRICE} / L</div> }
+                            { (bidContent.length === 0) &&<div className="title">Starting Price: ${product[0].PRICE} / L</div> }
                             { this.props.isLoginSuccess && !this.props.isSeller && 
                                 <form className="bid-input" onSubmit={this.submitBid}>
                                     $<input ref={(ref) => {this.Bid = ref}} className="btn-bid-input" type="number" step='0.50' defaultValue={parseFloat(bids[0].PRICE) + 1}></input>

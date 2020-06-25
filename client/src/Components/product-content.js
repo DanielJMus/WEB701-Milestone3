@@ -58,6 +58,8 @@ class Product extends React.Component {
                     <div className="product-header">{js[0].NAME}</div> 
                     <img className="product-image" src={js[0].IMG}/>
                     <div className="product-info">
+                        <p>{js[0].DESCRIPTION}</p>
+                        <h2>Product Details</h2>
                         <p><b>Fruit:</b> {js[0].FRUIT}</p>
                         <p><b>Energy:</b> {js[0].ENERGY} Kcal</p>
                         <p><b>Carbohydrates:</b> {js[0].CARBOHYDRATES}g</p>
@@ -66,8 +68,8 @@ class Product extends React.Component {
                         <p><b>Vitamin C:</b> {js[0].VITAMINC}mg</p>
                     </div>
                     <div className="product-seller">
+                        <h2>Seller Contact Info</h2>
                         <p><b>Seller:</b> {seller[0].USERNAME}</p>
-                        {/* <p><b>Email:</b> <a href="mailto:danielmus1999@hotmail.com?subject=Inquiry%20from%20{this.Name.value}&body={this.Content.value}">{seller[0].EMAIL}</a></p> */}
                         <p><b>Email:</b> <a href={`mailto:danielmus1999@hotmail.com?subject=Inquiry%20about%20${js[0].NAME}`}>{seller[0].EMAIL}</a></p>
                     </div>
                 </div>
