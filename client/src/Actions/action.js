@@ -57,7 +57,7 @@ export function login(username, password) {
                     dispatch(setLoginPending(false));
                     dispatch(setLoginSuccess(true));
                     dispatch(setUserID(json.ID));
-                    if(json.USERTYPE.data[0] === 1)
+                    if(json.USERTYPE === 1)
                     {
                         dispatch(setIsSeller(true));
                     }

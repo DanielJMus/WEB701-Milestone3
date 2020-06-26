@@ -81,7 +81,8 @@ export class Bid extends React.Component {
     render () {
         const { product, bids } = this.state;
         if (product == null || bids == null) return null;
-        var bidContent = ""
+        var bidContent = "";
+        var defaultBid = 0;
         try {
             bidContent = bids.map(item =>
                 <tr>
@@ -89,8 +90,10 @@ export class Bid extends React.Component {
                     <td>${item.PRICE}</td>
                 </tr>
             )
+            defaultBid = bids[0].PRICE;
         } catch (error)
         {
+            defaultBid = product[0].PRICE;
             bidContent = "";
         }
         return (
@@ -101,7 +104,7 @@ export class Bid extends React.Component {
                             { (bidContent.length === 0) &&<div className="title">Starting Price: ${product[0].PRICE} / L</div> }
                             { this.props.isLoginSuccess && !this.props.isSeller && 
                                 <form className="bid-input" onSubmit={this.submitBid}>
-                                    $<input ref={(ref) => {this.Bid = ref}} className="btn-bid-input" type="number" step='0.50' defaultValue={parseFloat(bids[0].PRICE) + 1}></input>
+                                    $<input ref={(ref) => {this.Bid = ref}} className="btn-bid-input" type="number" step='0.50' defaultValue={parseFloat(defaultBid) + 1}></input>
                                     <input className="btn-bid" type="submit" value="Place Bid"/>
                                 </form>
                             }
