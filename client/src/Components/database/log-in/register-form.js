@@ -23,7 +23,6 @@ class RegisterForm extends React.Component {
         let username = this.Name.value;
         let email = this.Email.value;
         bcrypt.hash(this.Password.value, 10, function(err, hash) {
-            console.log(hash);
             fetch('http://localhost:4200/api/users', {
                 method: 'post',
                 headers: {'Content-Type':'application/json'},
@@ -33,16 +32,21 @@ class RegisterForm extends React.Component {
                  "PASSWORD": hash
                 })
             }).then(res => {
-                if (res.status === 201) alert("Successfully created account.")
-                res.json().then(json => {
-                    var errno = json["error"]["errno"];
-                    if (errno === 1062)
-                    {
-                        alert("Sorry, this email is already registered");
-                    } else {
-                        alert(errno);
-                    }
-                })
+                console.log(res.status);
+                if (res.status === 201) 
+                {
+                    alert("Successfully created account.")
+                } else {
+                    res.json().then(json => {
+                        var errno = json["errno"];
+                        if (errno === 1062)
+                        {
+                            alert("Sorry, this email is already registered");
+                        } else {
+                            alert(errno);
+                        }
+                    })
+                }
             });
         });
     }

@@ -4,10 +4,23 @@ import ChatBot from 'react-simple-chatbot';
 
 import { connect } from 'react-redux';
 import { login } from '../Actions/action';
+import { ThemeProvider } from 'styled-components';
 
 import './Chat.css';
 
 const bcrypt = require('bcryptjs');
+
+// all available props
+const theme = {
+  background: '#f5f8fb',
+  headerBgColor: '#ff9029',
+  headerFontColor: '#fff',
+  headerFontSize: '15px',
+  botBubbleColor: '#EF6C00',
+  botFontColor: '#fff',
+  userBubbleColor: '#fff',
+  userFontColor: '#4a4a4a',
+};
 
 class EmailCheck extends Component {
   constructor (props) {
@@ -113,7 +126,7 @@ function CheckConfidence (input, keywords)
 
 
 // List of queries, synonyms are separated with a | symbol
-const loginQueries = ["struggling to|can't|cannot|cant|trying to", "log in|login|log into|logging into"]
+const loginQueries = ["trouble|struggling to|can't|cannot|cant|trying to", "log in|login|log into|logging into"]
 const contactAdminQueries = ["want to|can i|wanna|like to", "speak|talk|contact", "admin|owner|manager"]
 
 // Returns an array featuring a message [0] and a nextStep value [1]
@@ -149,6 +162,7 @@ class Chat extends Component {
 
     render () {
         return (
+        <ThemeProvider theme={theme}>
         <ChatBot
         headerTitle="Helper Bot"
         recognitionEnable={true}
@@ -166,7 +180,7 @@ class Chat extends Component {
           },
           {
             id: '2',
-            message: "What can I help you with?",
+            message: "What can I help you with today?",
             trigger: 'userQuery',
           },
           {
@@ -270,6 +284,7 @@ class Chat extends Component {
       
         ]}
       />
+      </ThemeProvider>
         );
     }
 }

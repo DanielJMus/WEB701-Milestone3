@@ -49,33 +49,21 @@ VALUES  ('Daniel Musgrave', 'danielmus1999@hotmail.com', '$2a$10$K856ecdI9MeygsC
 		('Bob Stevenson', 'bob@gmail.com', '$2a$10$l3ee7869Yy7gHweCKsjrr.x9gcSt9GjfCy6P1Wyp8RFc7K8fo3iuW', 0);
 
 INSERT INTO products (NAME, DESCRIPTION, PRICE, FRUIT, ENERGY, CARBOHYDRATES, SUGAR, SODIUM, VITAMINC, IMG, SELLERID) 
-VALUES  ('Premium Orange Juice', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
-
-INSERT INTO products (NAME, DESCRIPTION, PRICE, FRUIT, ENERGY, CARBOHYDRATES, SUGAR, SODIUM, VITAMINC, IMG, SELLERID)
-VALUES  ('Fresh Orange Juice', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://images.unsplash.com/photo-1573500883495-6c9b16d88d8c", 2);
-
-INSERT INTO products (NAME, DESCRIPTION, PRICE, FRUIT, ENERGY, CARBOHYDRATES, SUGAR, SODIUM, VITAMINC, IMG, SELLERID) 
-VALUES  ('Apple Juice', 'Short Product Description', 2.80, "Apple", 435, 24, 23, 7, 88, "https://images.unsplash.com/photo-1591735161367-577be05bc331", 2);
-
-INSERT INTO products (NAME, DESCRIPTION, PRICE, FRUIT, ENERGY, CARBOHYDRATES, SUGAR, SODIUM, VITAMINC, IMG, SELLERID) 
-VALUES  ('Premium Orange Juice', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
-
-INSERT INTO products (NAME, DESCRIPTION, PRICE, FRUIT, ENERGY, CARBOHYDRATES, SUGAR, SODIUM, VITAMINC, IMG, SELLERID)
-VALUES  ('Fresh Orange Juice 2', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://images.unsplash.com/photo-1573500883495-6c9b16d88d8c", 2);
-
-INSERT INTO products (NAME, DESCRIPTION, PRICE, FRUIT, ENERGY, CARBOHYDRATES, SUGAR, SODIUM, VITAMINC, IMG, SELLERID) 
-VALUES  ('Apple Juice', 'Short Product Description', 2.80, "Apple", 435, 24, 23, 7, 88, "https://images.unsplash.com/photo-1591735161367-577be05bc331", 2);
-
-INSERT INTO products (NAME, DESCRIPTION, PRICE, FRUIT, ENERGY, CARBOHYDRATES, SUGAR, SODIUM, VITAMINC, IMG, SELLERID) 
-VALUES  ('Premium Orange Juice', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://i.pinimg.com/736x/05/79/5a/05795a16b647118ffb6629390e995adb.jpg", 2);
-
-INSERT INTO products (NAME, DESCRIPTION, PRICE, FRUIT, ENERGY, CARBOHYDRATES, SUGAR, SODIUM, VITAMINC, IMG, SELLERID)
-VALUES  ('Fresh Orange Juice 2', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://images.unsplash.com/photo-1573500883495-6c9b16d88d8c", 2);
+VALUES  ('Premium Orange Juice', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://images.unsplash.com/photo-1549488933-2392c609e512?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=0", 2),
+		('Fresh Orange Juice', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://images.unsplash.com/photo-1524156868115-e696b44983db?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=0", 2),
+		('Apple Juice', 'Short Product Description', 2.80, "Apple", 435, 24, 23, 7, 88, "https://images.unsplash.com/photo-1591735161367-577be05bc331?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=0", 1),
+		('Pulpy Apple, Pineapple, Passionfruit Juice', 'Short Product Description', 2.79, "Apple, Pineapple, Passionfruit", 108, 26, 26, 2, 83, "https://images.unsplash.com/photo-1546751706-81c567470489?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=0", 2),
+		('Fresh Orange & Apple Juice', 'Short Product Description', 3.50, "Orange, Apple", 435, 24, 23, 7, 88, "https://images.unsplash.com/photo-1579760546582-4826b30671a4?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=0", 1),
+		('Fresh Apple Juice', 'Short Product Description', 2.80, "Apple", 435, 24, 23, 7, 88, "https://images.unsplash.com/photo-1567306226416-28f0efdc88ce?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=0", 1),
+		('Premium Orange Juice', 'Short Product Description', 3.00, "Orange", 106, 24, 20, 12, 83, "https://images.unsplash.com/photo-1551030797-46c120009b82?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=0", 2),
+		('Strawberry Juice', 'Short Product Description', 3.50, "Strawberry", 106, 24, 20, 12, 83, "https://images.unsplash.com/photo-1573500883495-6c9b16d88d8c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=400&q=0", 2);
 
 
 
 
 INSERT INTO bids (PRODUCTID, USERID, PRICE) 
-VALUES  (1, 2, 101.12),
-		(1, 1, 103.00),
-		(1, 2, 108.00);
+VALUES  (1, 2, 3.50),
+		(1, 1, 4.00),
+		(1, 2, 4.50),
+		(2, 3, 3.50),
+		(3, 3, 3.00);

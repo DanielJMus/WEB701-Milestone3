@@ -11,12 +11,15 @@ import { connect } from 'react-redux';
 import { login } from '../../../Actions/action';
 import { logout } from '../../../Actions/action';
 
+const bcrypt = require('bcryptjs');
+
 class Dashboard extends React.Component {  
 
     constructor() {
         super();
         this.state = {
             js: undefined,
+            user: undefined,
             content: undefined
         }
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -26,22 +29,42 @@ class Dashboard extends React.Component {
     // Submit the form data, adding the specified user data to the database.
     handleSubmit(event) {
         event.preventDefault();
-        fetch('http://localhost:4200/api/users/' + this.props.userID, {
-            method: 'put',
-            headers: {'Content-Type':'application/json'},
-            body: JSON.stringify({
-                "USERNAME": this.Name.value,
-                "EMAIL": this.Email.value,
-                "PASSWORD": this.Password.value
-            })
-        }).then(res => {
-            if (res.status === 201 || res.status === 204) {
-                alert("Successfully updated account. Please log in again.")
-                this.props.logout();
-                this.props.history.push('/login')
-            }
-            else alert(res.status)
+        let username = this.Name.value;
+        let email = this.Email.value;
+        let password = this.Password.value;
+        if(username.length <= 1 || email.length <= 1 || password.length <= 1)
+        {
+            alert("Update fields cannot be null.");
+            return;
+        }
+        bcrypt.hash(password, 10, function(err, hash) {
+            fetch('http://localhost:4200/api/users/' + this.props.userID, {
+                method: 'put',
+                headers: {'Content-Type':'application/json'},
+                body: JSON.stringify({
+                    "USERNAME": username,
+                    "EMAIL": email,
+                    "PASSWORD": hash
+                })
+            }).then(res => {
+                if (res.status === 201 || res.status === 204) {
+                    alert("Successfully updated account. Please log in again.")
+                    this.props.logout();
+                    this.props.history.push('/login')
+                }
+                else alert(res.status)
+            });
         });
+    }
+
+    GetUserData () {
+        fetch('http://localhost:4200/api/seller/' + this.props.userID, {
+            method: 'get'
+        }).then(res =>
+            res.json().then(json => {
+                this.setState({ user: json});
+            })
+        );
     }
 
     // Retrieve the JSON data of all the user's listings
@@ -58,10 +81,11 @@ class Dashboard extends React.Component {
     componentDidMount () {
         document.title = "Dashboard | Fresh Fruit Juice";
         this.GetJsonData();
+        this.GetUserData();
     }
 
     DeleteAccount () {
-        fetch('http://localhost:4200/api/users/' + this.props.userID, {
+        fetch('http://localhost:4200/api/seller/' + this.props.userID, {
             method: 'delete',
             headers: {'Content-Type':'application/json'},
             body: JSON.stringify({
@@ -77,30 +101,38 @@ class Dashboard extends React.Component {
         });
     }
 
+    contentClickHandler = (e) => {
+        const targetLink = e.target.closest('a');
+        if(!targetLink) return;
+        const productTarget = "/product/" + targetLink.getAttribute('productid');
+        e.preventDefault();
+        this.props.history.push(productTarget)
+    }
+
     render() {
-        const { js } = this.state;
+        const { js, user } = this.state;
         if (!this.props.isLoginSuccess)
         {
             this.props.history.push('/Login');
         }
-        if (js == null || !this.props.isLoginSuccess) return null;
+        if (js == null || user == null || !this.props.isLoginSuccess) return null;
         var products = this.props.isSeller && js.map(item => 
                 <div className="section">
                     <img alt="" className='section-image' src={item.IMG}/>
-                    <div className='section-info'>
-                        <a href="/" productID={item.ID}>
+                    <div className='section-info' onClick={this.contentClickHandler}>
+                        <a href="/" productid={item.ID}>
                             <h2 className='section-title' product-id={item.ID}>{item.NAME} | ${item.PRICE}</h2>
                         </a>
                         <p className='section-description'>{item.DESCRIPTION}</p>
                     </div>
-                    <div class='clear'/>
+                    <div className='clear'/>
                 </div>
         )
         return(
             <div className="content">
                 <Navbar/>
                 { /* If the user is not logged in, or is not an administrator, hide the page content. Otherwise render it. */
-                this.props.isLoginSuccess &&
+                js && user && this.props.isLoginSuccess &&
                 <div className="admin-panel">
                     <header>
                         <h1>Dashboard</h1>
@@ -110,12 +142,12 @@ class Dashboard extends React.Component {
                         <form onSubmit={this.handleSubmit}>
                             <label>
                                 Change Username:<br></br>
-                                <input ref={(ref) => {this.Name = ref}} type="text" id="input-name" name="name"/>
+                                <input ref={(ref) => {this.Name = ref}} type="text" id="input-name" value={user.USERNAME} name="name"/>
                             </label><br></br>
                             <br></br>
                             <label>
                                 Change Email:<br></br>
-                                <input ref={(ref) => {this.Email = ref}} type="text" id="input-email" name="email"/>
+                                <input ref={(ref) => {this.Email = ref}} type="text" id="input-email" value={user.EMAIL} name="email"/>
                             </label><br></br>
                             <br></br>
                             <h3>Update Password</h3>
